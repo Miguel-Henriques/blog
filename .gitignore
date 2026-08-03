@@ -1,0 +1,11 @@
+dist
+node_modules
+
+.DS_Store
+*.tfstate
+*.tfstate.*
+.terraform
+infra/terraform.tfvars
+
+IDEAS.md
+TODO.md

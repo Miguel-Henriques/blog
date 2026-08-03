@@ -1,0 +1,195 @@
+import {
+	ArrowDown,
+	Download,
+	ExternalLink,
+	Mail,
+	MapPin,
+	Sparkles,
+} from 'lucide-react'
+import { AppCard } from '@/components/app-card'
+import { CredlyBadge } from '@/components/credly-badge'
+import { ExperienceSection } from '@/components/experience-section'
+import { SectionHeading } from '@/components/section-heading'
+import { SiteHeader } from '@/components/site-header'
+import { SpeakingAccordion } from '@/components/speaking-accordion'
+import { Button } from '@/components/ui/button'
+import { apps } from '@/content/apps'
+import { profile } from '@/content/profile'
+
+export function App() {
+	return (
+		<>
+			<a
+				className="sr-only z-50 bg-background px-4 py-2 focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+				href="#main-content"
+			>
+				Skip to content
+			</a>
+			<SiteHeader />
+			<main id="main-content">
+				<section
+					className="mx-auto grid min-h-[calc(100svh-4rem)] max-w-6xl content-center gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_18rem]"
+					id="top"
+				>
+					<div>
+						<div className="mb-8 flex items-center gap-3">
+							<span
+								aria-hidden="true"
+								className="size-2 rounded-full bg-primary"
+							/>
+							<p className="text-sm text-muted-foreground">
+								{profile.location}
+							</p>
+						</div>
+						<p className="mb-5 text-xs font-semibold tracking-[0.2em] text-primary uppercase">
+							{profile.role}
+						</p>
+						<h1 className="max-w-4xl font-serif text-5xl leading-[0.98] tracking-[-0.04em] sm:text-7xl lg:text-8xl">
+							Building thoughtful systems for the web.
+						</h1>
+						<p className="mt-8 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
+							{profile.summary}
+						</p>
+						<div className="mt-10 flex flex-wrap gap-3">
+							<Button asChild size="lg">
+								<a href="#apps">
+									Explore my work
+									<ArrowDown aria-hidden="true" />
+								</a>
+							</Button>
+							<Button asChild size="lg" variant="outline">
+								<a download href="/miguel-henriques-cv.pdf">
+									<Download aria-hidden="true" />
+									Download resume
+								</a>
+							</Button>
+						</div>
+					</div>
+					<aside className="hidden self-end border-l pl-8 lg:block">
+						<p className="font-serif text-2xl">{profile.name}</p>
+						<p className="mt-3 text-sm leading-6 text-muted-foreground">
+							Full-stack applications, cloud platforms, and AI-native products.
+						</p>
+					</aside>
+				</section>
+
+				<ExperienceSection />
+
+				<section className="border-y bg-card" id="apps">
+					<div className="mx-auto max-w-6xl px-5 py-24 sm:px-8">
+						<SectionHeading
+							description="A catalog of focused tools and experiments I have designed and built."
+							eyebrow="Apps"
+							title="Small products, built end to end."
+						/>
+						{apps.length > 0 ? (
+							<div className="mt-14 grid gap-6 lg:grid-cols-2">
+								{apps.map((app) => (
+									<AppCard app={app} key={app.name} />
+								))}
+							</div>
+						) : (
+							<div className="mt-14 rounded-xl border border-dashed bg-background p-10 sm:p-14">
+								<Sparkles aria-hidden="true" className="size-6 text-primary" />
+								<h3 className="mt-6 font-serif text-2xl">
+									The catalog is taking shape.
+								</h3>
+								<p className="mt-3 max-w-xl leading-7 text-muted-foreground">
+									I am preparing the first set of custom-built apps for public
+									release. Check back soon.
+								</p>
+							</div>
+						)}
+					</div>
+				</section>
+
+				<section className="mx-auto max-w-6xl px-5 py-24 sm:px-8" id="speaking">
+					<SectionHeading
+						description="Sessions and workshops on cloud architecture, web development, and application security."
+						eyebrow="Public speaking"
+						title="Sharing what I learn."
+					/>
+					<div className="mt-14">
+						<SpeakingAccordion events={profile.speaking} />
+					</div>
+					<div className="mt-20 grid gap-14 border-t pt-16 md:grid-cols-3">
+						<div>
+							<h2 className="font-serif text-3xl">Certifications</h2>
+
+							<CredlyBadge
+								badgeId="a1edbe87-8f85-4a8b-83a4-692404130ed0"
+								name="AWS Certified Solutions Architect – Associate"
+							/>
+
+							<ul className="mt-7 space-y-3">
+								{profile.certifications.map((certification) => (
+									<li className="leading-7" key={certification}>
+										{certification}
+									</li>
+								))}
+							</ul>
+						</div>
+						<div>
+							<h2 className="font-serif text-3xl">Education</h2>
+							<p className="mt-7 font-semibold">{profile.education.degree}</p>
+							<p className="mt-2 text-muted-foreground">
+								{profile.education.institution}
+							</p>
+							<p className="mt-1 text-sm text-muted-foreground">
+								{profile.education.period} · {profile.education.location}
+							</p>
+						</div>
+						<div>
+							<h2 className="font-serif text-3xl">Languages</h2>
+							<p className="mt-7 text-muted-foreground">
+								{profile.languages.join(' · ')}
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<section
+					className="border-t bg-primary text-primary-foreground"
+					id="contact"
+				>
+					<div className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
+						<p className="text-xs font-semibold tracking-[0.2em] uppercase opacity-70">
+							Contact
+						</p>
+						<h2 className="mt-5 max-w-3xl font-serif text-4xl tracking-tight sm:text-6xl">
+							Let’s build something useful.
+						</h2>
+						<div className="mt-10 flex flex-wrap gap-3">
+							<Button asChild size="lg" variant="secondary">
+								<a href={`mailto:${profile.email}`}>
+									<Mail aria-hidden="true" />
+									Email me
+								</a>
+							</Button>
+							<Button
+								asChild
+								className="border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+								size="lg"
+								variant="outline"
+							>
+								<a href={profile.linkedin} rel="noreferrer" target="_blank">
+									<ExternalLink aria-hidden="true" />
+									LinkedIn
+								</a>
+							</Button>
+						</div>
+						<div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-primary-foreground/20 pt-6 text-sm opacity-75">
+							<p>
+								© {new Date().getFullYear()} {profile.name}
+							</p>
+							<p className="flex items-center gap-2">
+								<MapPin aria-hidden="true" className="size-4" />
+								{profile.location}
+							</p>
+						</div>
+					</div>
+				</section>
+			</main>
+		</>
+	)
+}
