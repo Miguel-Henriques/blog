@@ -3,6 +3,12 @@ import { Badge } from '@/components/ui/badge'
 import { profile } from '@/content/profile'
 
 export function CapabilitiesSection() {
+	const skills = profile.skills
+
+	if (!skills?.length) {
+		return null
+	}
+
 	return (
 		<section className="mx-auto max-w-6xl px-5 py-24 sm:px-8" id="skills">
 			<SectionHeading
@@ -10,7 +16,7 @@ export function CapabilitiesSection() {
 				title="A broad toolkit, applied with intent."
 			/>
 			<div className="mt-14 grid gap-px overflow-hidden rounded-xl border bg-border sm:grid-cols-2 lg:grid-cols-3">
-				{profile.skills.map((skill) => (
+				{skills.map((skill) => (
 					<article className="bg-background p-6" key={skill.label}>
 						<h3 className="font-serif text-xl">{skill.label}</h3>
 						<ul className="mt-5 flex flex-wrap gap-2">

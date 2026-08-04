@@ -1,9 +1,13 @@
 import { ExternalLink, Images } from 'lucide-react'
 import { CompanyLogo } from '@/components/company-logo'
-import type { profile } from '@/content/profile'
+import type {
+	ExperienceEntry,
+	ExperienceLink,
+	ExperienceMedia,
+} from '@/content/profile'
 import { cn } from '@/lib/utils'
 
-export type ExperiencePosition = (typeof profile.experience)[number]
+export type ExperiencePosition = ExperienceEntry
 
 interface ExperienceDetailsProps {
 	className?: string
@@ -17,17 +21,6 @@ interface ExperienceIdentityProps {
 interface ExperienceMetaProps {
 	className?: string
 	position: ExperiencePosition
-}
-
-interface ExperienceLink {
-	label: string
-	url: string
-}
-
-interface ExperienceMedia {
-	alt: string
-	caption: string
-	src: string
 }
 
 interface ProjectResourcesProps {
@@ -136,9 +129,6 @@ export function ExperienceDetails({
 			{'projects' in position && position.projects ? (
 				<div className="space-y-6">
 					{position.projects.map((project) => {
-						const links = 'links' in project ? project.links : undefined
-						const media = 'media' in project ? project.media : undefined
-
 						return (
 							<section
 								className="border-l-2 border-border pl-5"
@@ -152,7 +142,7 @@ export function ExperienceDetails({
 										</li>
 									))}
 								</ul>
-								<ProjectResources links={links} media={media} />
+								<ProjectResources links={project.links} media={project.media} />
 							</section>
 						)
 					})}

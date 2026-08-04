@@ -110,10 +110,7 @@ export function App() {
 
 							<div className="mt-7 flex flex-wrap gap-[2px]">
 								{profile.certifications.map((certification) => {
-									if (
-										!('badgeId' in certification) ||
-										!certification.badgeId
-									) {
+									if (!('badgeId' in certification) || !certification.badgeId) {
 										return null
 									}
 
@@ -126,7 +123,6 @@ export function App() {
 									)
 								})}
 							</div>
-
 						</div>
 						<div>
 							<h2 className="font-serif text-3xl">Education</h2>

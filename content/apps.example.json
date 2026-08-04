@@ -1,0 +1,51 @@
+[
+	{
+		"name": "Example App",
+		"description": "One or two sentences on the problem solved and the outcome.",
+		"status": "active",
+		"technologies": ["React", "TypeScript", "Node.js"],
+		"liveUrl": "https://app.example.com",
+		"sourceUrl": "https://github.com/alex-example/example-app",
+		"media": {
+			"type": "image",
+			"alt": "Creating a project and viewing its generated report",
+			"width": 1600,
+			"height": 900,
+			"imageSources": {
+				"avif": "/media/apps/example-app/screenshot.avif",
+				"webp": "/media/apps/example-app/screenshot.webp"
+			}
+		}
+	},
+	{
+		"name": "Demo Workflow App",
+		"description": "Use video media for short screen recordings of a single workflow.",
+		"status": "active",
+		"technologies": ["Next.js", "AWS"],
+		"liveUrl": "https://demo.example.com",
+		"media": {
+			"type": "video",
+			"alt": "Uploading a file and reviewing the generated summary",
+			"width": 1280,
+			"height": 720,
+			"poster": "/media/apps/demo-workflow/poster.webp",
+			"videoSources": {
+				"mp4": "/media/apps/demo-workflow/demo.mp4",
+				"webm": "/media/apps/demo-workflow/demo.webm"
+			}
+		}
+	},
+	{
+		"name": "Work in Progress",
+		"description": "Apps without media render as text-only cards.",
+		"status": "in-progress",
+		"technologies": ["Python", "FastAPI"]
+	},
+	{
+		"name": "Archived Side Project",
+		"description": "Archived apps can omit liveUrl and keep sourceUrl only.",
+		"status": "archived",
+		"technologies": ["Vue", "Firebase"],
+		"sourceUrl": "https://github.com/alex-example/archived-app"
+	}
+]

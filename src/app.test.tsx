@@ -11,7 +11,7 @@ describe('digital CV', () => {
 				name: 'Miguel Pestana Henriques',
 			}),
 		).toBeVisible()
-		expect(screen.getByText('Software Engineer')).toBeVisible()
+		expect(screen.getByText('Senior Software Engineer')).toBeVisible()
 		expect(
 			screen.getByText('Amazon Web Services · Professional Services'),
 		).toBeVisible()

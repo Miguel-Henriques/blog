@@ -7,7 +7,6 @@
 		"build": "tsc --noEmit && vite build && node scripts/finalize-build.mjs",
 		"check": "biome check .",
 		"check:fix": "biome check --write .",
-		"deploy": "sh ./scripts/deploy.sh",
 		"dev": "vite",
 		"test": "vitest run",
 		"typecheck": "tsc --noEmit"

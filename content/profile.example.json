@@ -1,0 +1,98 @@
+{
+	"name": "Alex Example",
+	"role": "Software Engineer",
+	"location": "City, Country",
+	"email": "alex@example.com",
+	"github": "https://github.com/alex-example",
+	"linkedin": "https://www.linkedin.com/in/alex-example",
+	"summary": "Short professional summary. Keep this aligned with the homepage copy.",
+	"skills": [
+		{
+			"label": "Languages",
+			"items": ["TypeScript", "Python"]
+		},
+		{
+			"label": "Cloud & Infra",
+			"items": ["AWS", "Terraform", "CI/CD"]
+		}
+	],
+	"experience": [
+		{
+			"role": "Senior Software Engineer",
+			"company": "Example Corp",
+			"logos": ["stealth"],
+			"period": "Jan 2024 – Present",
+			"location": "Remote",
+			"highlights": [
+				"One-line impact statement with a concrete outcome.",
+				"Another highlight describing scope, ownership, or scale."
+			]
+		},
+		{
+			"role": "Software Engineer",
+			"company": "Previous Employer",
+			"logos": ["aws"],
+			"period": "2020 – 2023",
+			"location": "City, Country",
+			"projects": [
+				{
+					"name": "Customer Platform",
+					"highlights": [
+						"Built a feature used by internal teams.",
+						"Reduced integration time by introducing a reusable adapter."
+					],
+					"links": [
+						{
+							"label": "Press release or case study",
+							"url": "https://example.com/case-study"
+						}
+					],
+					"media": [
+						{
+							"alt": "Screenshot of the platform dashboard",
+							"caption": "Dashboard used by operations teams",
+							"src": "/experience/application-media-placeholder.svg"
+						}
+					]
+				}
+			]
+		}
+	],
+	"certifications": [
+		{
+			"name": "aws-sa-associate",
+			"badgeId": "00000000-0000-0000-0000-000000000000"
+		}
+	],
+	"speaking": [
+		{
+			"event": "Example Conference",
+			"title": "Talk title shown in the accordion",
+			"location": "City",
+			"year": "2025",
+			"summary": "One paragraph describing the talk topic and audience.",
+			"presentedWith": "Co-speaker Name",
+			"images": [
+				{
+					"alt": "Speaker on stage at Example Conference",
+					"src": "/speaking/example-conference-2025.avif"
+				},
+				{
+					"alt": "Event logo",
+					"isLogo": true,
+					"src": "/logos/aws-dark.svg"
+				}
+			]
+		}
+	],
+	"education": {
+		"degree": "BSc Computer Science",
+		"institution": "University Name",
+		"period": "2015 – 2019",
+		"location": "City, Country"
+	},
+	"languages": [
+		"English · Native",
+		"Spanish · Professional working proficiency"
+	]
+}
