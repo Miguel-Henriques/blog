@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title description">
-	<title id="title">AWS</title>
-	<desc id="description">AWS wordmark on a dark blue background</desc>
-	<rect width="1200" height="675" fill="#232f3e"/>
-	<text x="600" y="360" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="210" font-weight="700" text-anchor="middle">aws</text>
-	<path d="M455 426c96 61 246 68 342 7" fill="none" stroke="#ff9900" stroke-linecap="round" stroke-width="24"/>
-	<path d="m778 413 42 13-28 34" fill="none" stroke="#ff9900" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"/>
-</svg>

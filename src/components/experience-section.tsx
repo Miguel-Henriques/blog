@@ -1,62 +1,7 @@
-import { Building2 } from 'lucide-react'
+import { CompanyLogo } from '@/components/company-logo'
 import { SectionHeading } from '@/components/section-heading'
 import { Separator } from '@/components/ui/separator'
 import { profile } from '@/content/profile'
-
-type CompanyLogo = (typeof profile.experience)[number]['logos'][number]
-
-interface CompanyLogoProps {
-	logo: CompanyLogo
-}
-
-function CompanyLogoMark({ logo }: CompanyLogoProps) {
-	if (logo === 'stealth') {
-		return (
-			<span
-				aria-label="Stealth company"
-				className="flex size-14 items-center justify-center text-muted-foreground"
-				role="img"
-			>
-				<Building2 aria-hidden="true" className="size-6" />
-			</span>
-		)
-	}
-
-	if (logo === 'aws') {
-		return (
-			<span
-				aria-label="Amazon Web Services"
-				className="flex size-14 items-center justify-center text-lg font-bold tracking-tight text-[#232f3e] lowercase dark:text-white"
-				role="img"
-			>
-				aws
-			</span>
-		)
-	}
-
-	if (logo === 'deloitte') {
-		return (
-			<span
-				aria-label="Deloitte"
-				className="flex size-14 items-center justify-center text-[0.68rem] font-bold tracking-tight text-black dark:text-white"
-				role="img"
-			>
-				Deloitte<span className="text-[#86bc25]">.</span>
-			</span>
-		)
-	}
-
-	return (
-		<span
-			aria-label="Neotalent"
-			className="flex size-14 flex-col items-center justify-center text-[0.65rem] leading-none font-bold tracking-tight text-[#5750a6] dark:text-[#a9a4ef]"
-			role="img"
-		>
-			<span>neo</span>
-			<span>talent</span>
-		</span>
-	)
-}
 
 export function ExperienceSection() {
 	return (
@@ -82,7 +27,7 @@ export function ExperienceSection() {
 								<div className="flex items-start gap-4">
 									<div className="flex shrink-0 gap-2">
 										{position.logos.map((logo) => (
-											<CompanyLogoMark key={logo} logo={logo} />
+											<CompanyLogo key={logo} logo={logo} />
 										))}
 									</div>
 									<div className="pt-0.5">
@@ -92,7 +37,7 @@ export function ExperienceSection() {
 										</p>
 									</div>
 								</div>
-								{'highlights' in position ? (
+								{position.highlights ? (
 									<ul className="mt-5 space-y-3 text-muted-foreground">
 										{position.highlights.map((highlight) => (
 											<li className="flex gap-3 leading-7" key={highlight}>
@@ -105,7 +50,7 @@ export function ExperienceSection() {
 										))}
 									</ul>
 								) : null}
-								{'projects' in position ? (
+								{position.projects ? (
 									<div className="mt-7 space-y-7">
 										{position.projects.map((project) => (
 											<div key={project.name}>

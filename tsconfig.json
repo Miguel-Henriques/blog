@@ -13,12 +13,13 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"paths": {
-			"@/*": ["./src/*"]
+			"@/*": ["./src/*"],
+			"@content/*": ["./content/*"]
 		},
 		"skipLibCheck": true,
 		"strict": true,
 		"target": "ES2024",
 		"types": ["vite/client", "vitest/globals"]
 	},
-	"include": ["src", "vite.config.ts"]
+	"include": ["content", "src", "vite.config.ts"]
 }

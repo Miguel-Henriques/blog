@@ -105,7 +105,7 @@ export function App() {
 
 				<section className="mx-auto max-w-6xl px-5 py-24 sm:px-8" id="speaking">
 					<SectionHeading
-						description="Sessions and workshops on cloud architecture, web development, and application security."
+						description="Sessions and workshops centered on software engineering and cloud computing."
 						eyebrow="Public speaking"
 						title="Sharing what I learn."
 					/>
@@ -116,18 +116,25 @@ export function App() {
 						<div>
 							<h2 className="font-serif text-3xl">Certifications</h2>
 
-							<CredlyBadge
-								badgeId="a1edbe87-8f85-4a8b-83a4-692404130ed0"
-								name="AWS Certified Solutions Architect – Associate"
-							/>
+							<div className="mt-7 flex flex-wrap gap-[2px]">
+								{profile.certifications.map((certification) => {
+									if (
+										!('badgeId' in certification) ||
+										!certification.badgeId
+									) {
+										return null
+									}
 
-							<ul className="mt-7 space-y-3">
-								{profile.certifications.map((certification) => (
-									<li className="leading-7" key={certification}>
-										{certification}
-									</li>
-								))}
-							</ul>
+									return (
+										<CredlyBadge
+											badgeId={certification.badgeId}
+											key={certification.badgeId}
+											name={certification.name}
+										/>
+									)
+								})}
+							</div>
+
 						</div>
 						<div>
 							<h2 className="font-serif text-3xl">Education</h2>

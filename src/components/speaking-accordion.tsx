@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, MapPin, Users } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Users } from 'lucide-react'
 import { useCallback, useRef, useState } from 'react'
 import {
 	Accordion,
@@ -61,21 +61,27 @@ function SpeakingCarousel({ images }: SpeakingCarouselProps) {
 			<div className="flex overflow-hidden" ref={carouselRef}>
 				{images.map((image, index) => {
 					const isLogo = 'isLogo' in image && image.isLogo
+					const isSvg = image.src.endsWith('.svg')
 
 					return (
 						<figure
 							aria-hidden={index !== activeIndex}
 							className={cn(
-								'aspect-video w-full shrink-0 overflow-hidden',
-								isLogo && 'bg-[#111827] p-12 sm:p-16',
+								'w-full shrink-0 overflow-hidden',
+								isSvg
+									? 'flex h-44 items-center justify-center sm:h-52'
+									: 'aspect-video',
+								isLogo && 'bg-[#111827] px-6 py-8 sm:px-8 sm:py-10',
 							)}
 							key={image.src}
 						>
 							<img
 								alt={image.alt}
 								className={cn(
-									'h-full w-full',
-									isLogo ? 'object-contain' : 'object-cover',
+									isSvg
+										? 'max-h-24 w-auto max-w-[85%] object-contain sm:max-h-32'
+										: 'h-full w-full object-cover',
+									isLogo && !isSvg && 'object-contain',
 								)}
 								decoding="async"
 								loading="lazy"
@@ -139,17 +145,13 @@ function SpeakingAccordionItem({ event, index }: SpeakingAccordionItemProps) {
 				<article className="grid gap-8 lg:grid-cols-2 lg:gap-12">
 					<SpeakingCarousel images={event.images} />
 					<div className="flex flex-col justify-center">
-						<h3 className="font-serif text-3xl">{event.event}</h3>
-						<div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
-							<span className="flex items-center gap-2">
-								<MapPin aria-hidden="true" className="size-4" />
-								{event.location} · {event.year}
-							</span>
-							<span className="flex items-center gap-2">
+						<h3 className="font-serif text-3xl">{event.title}</h3>
+						{'presentedWith' in event && event.presentedWith ? (
+							<p className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
 								<Users aria-hidden="true" className="size-4" />
-								{event.presentedWith}
-							</span>
-						</div>
+								<span>Co-speakers: {event.presentedWith}</span>
+							</p>
+						) : null}
 						<p className="mt-6 leading-7 text-muted-foreground">
 							{event.summary}
 						</p>

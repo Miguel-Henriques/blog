@@ -1,3 +1,5 @@
+import appsData from '@content/apps.json'
+
 export interface AppMedia {
 	alt: string
 	height: number
@@ -24,4 +26,4 @@ export interface AppEntry {
 	technologies: readonly string[]
 }
 
-export const apps: readonly AppEntry[] = []
+export const apps = appsData as readonly AppEntry[]
