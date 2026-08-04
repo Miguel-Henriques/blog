@@ -8,9 +8,10 @@ describe('digital CV', () => {
 
 		expect(
 			screen.getByRole('heading', {
-				name: 'Building thoughtful systems for the web.',
+				name: 'Miguel Pestana Henriques',
 			}),
 		).toBeVisible()
+		expect(screen.getByText('Software Engineer')).toBeVisible()
 		expect(
 			screen.getByText('Amazon Web Services · Professional Services'),
 		).toBeVisible()

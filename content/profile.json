@@ -1,11 +1,11 @@
 {
 	"name": "Miguel Pestana Henriques",
-	"role": "Software Engineer",
+	"role": "Senior Software Engineer",
 	"location": "Lisbon, Portugal",
 	"email": "miguel.p.henriques.96@gmail.com",
 	"github": "https://github.com/Miguel-Henriques",
 	"linkedin": "https://www.linkedin.com/in/miguelhenriques96",
-	"summary": "Software engineer with 7 years designing and building full-stack applications across cloud platforms and, most recently, AI-native products. Founding engineer experience shipping agentic workflows end-to-end, plus 5+ years of consulting experience, including at AWS Professional Services, delivering production-ready platforms for enterprise customers.",
+	"summary": "7 years of experience designing and building full-stack applications on the cloud. Founding engineer experience shipping agentic workflows end-to-end, 5+ years of consulting experience.",
 	"experience": [
 		{
 			"role": "Founding Engineer",
@@ -13,8 +13,8 @@
 			"logos": [
 				"stealth"
 			],
-			"period": "January 2026 – June 2026",
-			"location": "Badajoz, Spain · Remote",
+			"period": "Jan 2026 – Jun 2026",
+			"location": "Remote",
 			"highlights": [
 				"One of three founding team members building an AI-native design experience that enables non-technical users to iterate directly on live web applications.",
 				"Jointly owned the product’s architectural direction with the CTO and built core features, including the agentic workflow for generating embeddable website components."
@@ -26,7 +26,7 @@
 			"logos": [
 				"aws"
 			],
-			"period": "January 2023 – January 2026",
+			"period": "Jan 2023 – Jan 2026",
 			"location": "Munich, Germany",
 			"projects": [
 				{
@@ -34,6 +34,12 @@
 					"highlights": [
 						"Built the next generation of TP ICAP’s trading platform as part of the core engineering team.",
 						"Co-led a compatibility adapter that cut legacy application integration from months to weeks and authored an organisation-wide permissions model."
+					],
+					"links": [
+						{
+							"label": "TP ICAP and AWS strategic partnership",
+							"url": "https://tpicap.com/tpicap/media/press-releases/2024/tp-icap-and-aws-announce-major-strategic-collaboration"
+						}
 					]
 				},
 				{
@@ -41,6 +47,12 @@
 					"highlights": [
 						"Helped build the platform supporting BMW Group’s transition to a direct-sales agency model.",
 						"Led the architecture and implementation of a reusable authorisation service adopted by three other internal projects."
+					],
+					"links": [
+						{
+							"label": "BMW Group cloud transformation",
+							"url": "https://www.press.bmwgroup.com/global/article/detail/T0437788EN/bmw-group-to-launch-direct-sales-model-across-europe-starting-from-1-january-2024-with-mini-in-three-countries?language=en"
+						}
 					]
 				},
 				{
@@ -48,6 +60,12 @@
 					"highlights": [
 						"Led UI engineering and UX for a FinOps platform from prototype to general availability for 2,000+ users.",
 						"Created reusable Amazon QuickSight embedding blueprints adopted by six other customer teams."
+					],
+					"links": [
+						{
+							"label": "Cloud Efficiency Analytics",
+							"url": "https://aws.amazon.com/blogs/big-data/bmw-cloud-efficiency-analytics-powered-by-amazon-quicksight-and-amazon-athena/"
+						}
 					]
 				}
 			]
@@ -58,7 +76,7 @@
 			"logos": [
 				"deloitte"
 			],
-			"period": "February 2022 – December 2022",
+			"period": "Feb 2022 – Dec 2022",
 			"location": "Lisbon, Portugal",
 			"highlights": [
 				"Led six engineers building a cross-platform BMW Group analytics application that turns vehicle sales data into purpose-built views for C-level executives.",
@@ -105,11 +123,11 @@
 			"images": [
 				{
 					"alt": "Miguel Henriques and Emanuel Scirlet at AWS Cloud Day Zurich",
-					"src": "/speaking/aws-cloud-day-zurich-2023_2.jpeg"
+					"src": "/speaking/aws-cloud-day-zurich-2023_2.avif"
 				},
 				{
 					"alt": "AWS Cloud Day Zurich speakers and event team",
-					"src": "/speaking/aws-cloud-day-zurich-2023_1.jpg"
+					"src": "/speaking/aws-cloud-day-zurich-2023_1.avif"
 				}
 			]
 		},
@@ -138,11 +156,11 @@
 			"images": [
 				{
 					"alt": "Miguel Henriques and Emanuel Scirlet presenting at Amazon DevCon",
-					"src": "/speaking/amazon-devcon-seattle-2024_2.jpeg"
+					"src": "/speaking/amazon-devcon-seattle-2024_2.avif"
 				},
 				{
 					"alt": "Miguel Henriques presenting at Amazon DevCon",
-					"src": "/speaking/amazon-devcon-seattle-2024_1.jpeg"
+					"src": "/speaking/amazon-devcon-seattle-2024_1.avif"
 				}
 			]
 		},
@@ -170,7 +188,7 @@
 			"images": [
 				{
 					"alt": "Miguel Henriques at Amazon WebDevCon in New York",
-					"src": "/speaking/web-dev-con-new-york-2024.jpeg"
+					"src": "/speaking/web-dev-con-new-york-2024.avif"
 				}
 			]
 		},
@@ -184,7 +202,7 @@
 			"images": [
 				{
 					"alt": "Miguel Henriques presenting at AWS Community Day in Lisbon",
-					"src": "/speaking/aws-community-day-portugal-2025.jpeg"
+					"src": "/speaking/aws-community-day-portugal-2025.avif"
 				}
 			]
 		}

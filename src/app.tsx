@@ -15,6 +15,7 @@ import { SpeakingAccordion } from '@/components/speaking-accordion'
 import { Button } from '@/components/ui/button'
 import { apps } from '@/content/apps'
 import { profile } from '@/content/profile'
+import { getCvHref } from '@/lib/cv'
 
 export function App() {
 	return (
@@ -28,49 +29,40 @@ export function App() {
 			<SiteHeader />
 			<main id="main-content">
 				<section
-					className="mx-auto grid min-h-[calc(100svh-4rem)] max-w-6xl content-center gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_18rem]"
+					className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-16"
 					id="top"
 				>
-					<div>
-						<div className="mb-8 flex items-center gap-3">
-							<span
-								aria-hidden="true"
-								className="size-2 rounded-full bg-primary"
-							/>
-							<p className="text-sm text-muted-foreground">
-								{profile.location}
-							</p>
-						</div>
-						<p className="mb-5 text-xs font-semibold tracking-[0.2em] text-primary uppercase">
-							{profile.role}
-						</p>
-						<h1 className="max-w-4xl font-serif text-5xl leading-[0.98] tracking-[-0.04em] sm:text-7xl lg:text-8xl">
-							Building thoughtful systems for the web.
-						</h1>
-						<p className="mt-8 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
-							{profile.summary}
-						</p>
-						<div className="mt-10 flex flex-wrap gap-3">
-							<Button asChild size="lg">
-								<a href="#apps">
-									Explore my work
-									<ArrowDown aria-hidden="true" />
-								</a>
-							</Button>
-							<Button asChild size="lg" variant="outline">
-								<a download href="/miguel-henriques-cv.pdf">
-									<Download aria-hidden="true" />
-									Download resume
-								</a>
-							</Button>
-						</div>
+					<h1 className="font-serif text-5xl tracking-tight sm:text-6xl">
+						{profile.name}
+					</h1>
+					<p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-base text-muted-foreground">
+						<span>{profile.role}</span>
+						<span
+							aria-hidden="true"
+							className="hidden size-1 rounded-full bg-muted-foreground/50 sm:inline-block"
+						/>
+						<span className="inline-flex items-center gap-2">
+							<MapPin aria-hidden="true" className="size-4" />
+							{profile.location}
+						</span>
+					</p>
+					<p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground">
+						{profile.summary}
+					</p>
+					<div className="mt-8 flex flex-wrap gap-3">
+						<Button asChild>
+							<a download href={getCvHref()}>
+								<Download aria-hidden="true" />
+								Download resume
+							</a>
+						</Button>
+						<Button asChild variant="outline">
+							<a href="#apps">
+								What I’m working on
+								<ArrowDown aria-hidden="true" />
+							</a>
+						</Button>
 					</div>
-					<aside className="hidden self-end border-l pl-8 lg:block">
-						<p className="font-serif text-2xl">{profile.name}</p>
-						<p className="mt-3 text-sm leading-6 text-muted-foreground">
-							Full-stack applications, cloud platforms, and AI-native products.
-						</p>
-					</aside>
 				</section>
 
 				<ExperienceSection />

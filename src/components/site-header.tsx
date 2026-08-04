@@ -10,6 +10,7 @@ import {
 	SheetTrigger,
 } from '@/components/ui/sheet'
 import { profile } from '@/content/profile'
+import { getCvHref } from '@/lib/cv'
 
 function GitHubIcon() {
 	return (
@@ -105,7 +106,7 @@ export function SiteHeader() {
 						{isDark ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}
 					</Button>
 					<Button asChild className="hidden sm:inline-flex" size="sm">
-						<a download href="/miguel-henriques-cv.pdf">
+						<a download href={getCvHref()}>
 							<Download aria-hidden="true" />
 							Resume
 						</a>
@@ -144,7 +145,7 @@ export function SiteHeader() {
 									<a
 										className="mt-3 inline-flex items-center gap-2 rounded-md bg-primary px-3 py-3 text-primary-foreground"
 										download
-										href="/miguel-henriques-cv.pdf"
+										href={getCvHref()}
 									>
 										<Download aria-hidden="true" className="size-4" />
 										Download resume

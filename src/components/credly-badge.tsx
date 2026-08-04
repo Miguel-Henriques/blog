@@ -6,15 +6,15 @@ interface CertificationDefinition {
 const certificationByName = {
 	'aws-sa-associate': {
 		title: 'AWS Certified Solutions Architect – Associate',
-		image: '/certs/aws-sa-associate.png',
+		image: '/certs/aws-sa-associate.avif',
 	},
 	'aws-dev-associate': {
 		title: 'AWS Certified Developer – Associate',
-		image: '/certs/aws-dev-associate.png',
+		image: '/certs/aws-dev-associate.avif',
 	},
 	'psm-i': {
 		title: 'Professional Scrum Master I · Scrum.org',
-		image: '/certs/psm-i.png',
+		image: '/certs/psm-i.avif',
 	},
 } as const satisfies Record<string, CertificationDefinition>
 
