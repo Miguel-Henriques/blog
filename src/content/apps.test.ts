@@ -30,7 +30,7 @@ describe('apps catalog', () => {
 			expect(app.media.height).toBeGreaterThan(0)
 
 			if (app.media.type === 'image') {
-				expect(app.media.imageSources?.webp).toBeTruthy()
+				expect(app.media.imageSources?.avif).toBeTruthy()
 			} else {
 				expect(app.media.videoSources?.mp4).toBeTruthy()
 			}

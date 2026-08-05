@@ -4,8 +4,7 @@ export interface AppMedia {
 	alt: string
 	height: number
 	imageSources?: {
-		avif?: string
-		webp: string
+		avif: string
 	}
 	poster?: string
 	type: 'image' | 'video'

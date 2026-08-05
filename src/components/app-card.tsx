@@ -35,21 +35,15 @@ function Media({ media }: { media: AppMedia }) {
 
 	if (media.type === 'image' && media.imageSources) {
 		return (
-			<picture>
-				{media.imageSources.avif ? (
-					<source srcSet={media.imageSources.avif} type="image/avif" />
-				) : null}
-				<source srcSet={media.imageSources.webp} type="image/webp" />
-				<img
-					alt={media.alt}
-					className="aspect-video h-auto w-full object-cover"
-					decoding="async"
-					height={media.height}
-					loading="lazy"
-					src={media.imageSources.webp}
-					width={media.width}
-				/>
-			</picture>
+			<img
+				alt={media.alt}
+				className="aspect-video h-auto w-full object-cover"
+				decoding="async"
+				height={media.height}
+				loading="lazy"
+				src={media.imageSources.avif}
+				width={media.width}
+			/>
 		)
 	}
 

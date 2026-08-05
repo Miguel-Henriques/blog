@@ -12,8 +12,7 @@
 			"width": 1600,
 			"height": 900,
 			"imageSources": {
-				"avif": "/media/apps/example-app/screenshot.avif",
-				"webp": "/media/apps/example-app/screenshot.webp"
+				"avif": "/media/apps/example-app/screenshot.avif"
 			}
 		}
 	},
@@ -28,7 +27,7 @@
 			"alt": "Uploading a file and reviewing the generated summary",
 			"width": 1280,
 			"height": 720,
-			"poster": "/media/apps/demo-workflow/poster.webp",
+			"poster": "/media/apps/demo-workflow/poster.avif",
 			"videoSources": {
 				"mp4": "/media/apps/demo-workflow/demo.mp4",
 				"webm": "/media/apps/demo-workflow/demo.webm"

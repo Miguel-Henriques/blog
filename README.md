@@ -27,7 +27,7 @@ Common targets:
 Run each step separately. After the first `make infra-apply`, day-to-day
 updates usually need only `make app-release`.
 
-For full details, see [docs/20-aws-deployment.md](docs/20-aws-deployment.md).
+For full details, see [docs/02_AWS_DEPLOYMENT.md](docs/02_AWS_DEPLOYMENT.md).
 
 ### Updating the CV
 
@@ -39,27 +39,4 @@ make cv-deploy CV=cv.pdf
 
 ### Preparing media assets
 
-To most effective way to ensure a fast load of the website is to have a lean bundle. Media assets are a major contributor to the total bundle size of this application and even though there are techniques to reduce its impact (e.g. lazy loading), the first and cheapest level of optimization is to reduce asset size.
-
-**Note:** This is not applicable to SVGs.
-
-#### Rules
-
-1. Prefer AVIF as the image format for media assets
-2. Establish a max width for images (e.g. 1280)
-
-#### Conversion
-
-Conversion can be easily done with [`sharp`](https://sharp.pixelplumbing.com/), a popular image processing lib.
-
-```sh
-node --input-type=module <<'EOF'
-import sharp from 'sharp'
-
-await sharp('path/to/source.jpeg')
-	.autoOrient()
-	.resize({ width: 1280, withoutEnlargement: true })
-	.avif({ quality: 65, effort: 6 })
-	.toFile('public/speaking/event-name.avif')
-EOF
-```
+See [docs/03_MANAGING_ASSETS.md](docs/03_MANAGING_ASSETS.md).
