@@ -148,10 +148,10 @@
 		},
 		{
 			"event": "Amazon DevCon",
-			"title": "Zero Trust Architectures in Modern Applications",
+			"title": "Zero Trust Web Application Development",
 			"location": "Seattle",
 			"year": "2024",
-			"summary": "Introduced Zero Trust architecture principles, demonstrating how Amazon and our customers are already building on this security mentality and highlighting existing services that can accelerate teams on its adoption journey.",
+			"summary": "Introduced Zero Trust architecture principles, demonstrating concrete examples of how Amazon and many of our customers already adopted Zero Trust to their applications, highlighting existing AWS services that can accelerate teams on their Zero Trust adoption journey.",
 			"presentedWith": "Emanuel Scirlet",
 			"images": [
 				{
@@ -181,10 +181,10 @@
 		},
 		{
 			"event": "Amazon WebDevCon",
-			"title": "Building Real-Time Applications using AWS IoT Core",
+			"title": "Building Real-Time Applications with AWS IoT Core",
 			"location": "New York",
 			"year": "2024",
-			"summary": "Presented an engineering session showcasing the benefits of building real-time applications using managed service capabilities from AWS IoT Core.",
+			"summary": "Showcased building real-time applications with AWS IoT Core for an audience of Amazon engineers.",
 			"images": [
 				{
 					"alt": "Miguel Henriques at Amazon WebDevCon in New York",
@@ -197,7 +197,7 @@
 			"title": "Zero Trust Web Applications on AWS",
 			"location": "Lisbon",
 			"year": "2025",
-			"summary": "Shared the Zero-Trust approach to a local AWS community, using learnings and patterns deployed at our customers.",
+			"summary": "Shared the Zero-Trust approach to a local AWS community, using learnings and patterns deployed from past customer engagements.",
 			"presentedWith": "Emanuel Scirlet",
 			"images": [
 				{

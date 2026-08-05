@@ -15,6 +15,7 @@ const logoImageClassName = 'max-h-10 max-w-12 object-contain'
 const companyLogoById = {
 	stealth: {
 		alt: 'Stealth company',
+		src: '/logos/stealth.png',
 		fallback: <Building2 aria-hidden="true" className="size-6" />,
 		fallbackClassName:
 			'flex size-14 items-center justify-center text-muted-foreground',
