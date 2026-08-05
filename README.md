@@ -1,10 +1,12 @@
-# Miguel Henriques
+# Personal blog
 
-Personal portfolio site.
+A personal website that serves as blog, a digital portfolio and a digital CV.
+
+The website content is centrallised in two folders: `/content` for all text-related content and `/public` for assets such as media.
 
 ## Deployment
 
-Deployment is handled through the Makefile. Run `make` to list all targets.
+Deployment is handled through a Makefile. Run `make` to list all targets.
 
 ```sh
 make infra-apply                  # apply Terraform (first time or infra changes)
@@ -27,17 +29,15 @@ updates usually need only `make app-release`.
 
 For full details, see [docs/20-aws-deployment.md](docs/20-aws-deployment.md).
 
-## Updating the CV
+### Updating the CV
 
-The resume is served from S3 at `/$DOMAIN_HOSTNAME-cv.pdf` (for example
-`/your-domain.example-cv.pdf`). It is not bundled with the app build or
-uploaded by `make app-deploy`, so you can update it without redeploying the site.
+The resume is served from S3 at `/$DOMAIN_HOSTNAME-cv.pdf`. It is not bundled with the app build or uploaded by `make app-deploy`, so you can update it without redeploying the site.
 
 ```sh
 make cv-deploy CV=cv.pdf
 ```
 
-## Preparing media assets
+### Preparing media assets
 
 To most effective way to ensure a fast load of the website is to have a lean bundle. Media assets are a major contributor to the total bundle size of this application and even though there are techniques to reduce its impact (e.g. lazy loading), the first and cheapest level of optimization is to reduce asset size.
 
