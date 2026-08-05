@@ -1,14 +1,25 @@
 import { Building2 } from 'lucide-react'
 import type { ReactNode } from 'react'
 
-interface CompanyLogoDefinition {
-	alt: string
-	src?: string
-	srcLight?: string
-	srcDark?: string
-	fallback: ReactNode
-	fallbackClassName: string
-}
+type CompanyLogoDefinition =
+	| {
+			alt: string
+			srcLight: string
+			srcDark: string
+			fallback: ReactNode
+			fallbackClassName: string
+	  }
+	| {
+			alt: string
+			src: string
+			fallback: ReactNode
+			fallbackClassName: string
+	  }
+	| {
+			alt: string
+			fallback: ReactNode
+			fallbackClassName: string
+	  }
 
 const logoImageClassName = 'max-h-10 max-w-12 object-contain'
 
@@ -65,7 +76,8 @@ interface CompanyLogoProps {
  * fallback, or a generic icon when the logo id is unknown.
  */
 export function CompanyLogo({ logo }: CompanyLogoProps) {
-	const definition = companyLogoById[logo as CompanyLogoId]
+	const definition: CompanyLogoDefinition | undefined =
+		companyLogoById[logo as CompanyLogoId]
 
 	if (!definition) {
 		return (

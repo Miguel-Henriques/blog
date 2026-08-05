@@ -10,9 +10,7 @@
 		{
 			"role": "Founding Engineer",
 			"company": "Contextual",
-			"logos": [
-				"stealth"
-			],
+			"logos": ["stealth"],
 			"period": "Jan 2026 – Jun 2026",
 			"location": "Remote",
 			"highlights": [
@@ -23,9 +21,7 @@
 		{
 			"role": "Cloud Application Architect",
 			"company": "Amazon Web Services · Professional Services",
-			"logos": [
-				"aws"
-			],
+			"logos": ["aws"],
 			"period": "Jan 2023 – Jan 2026",
 			"location": "Munich, Germany",
 			"projects": [
@@ -73,9 +69,7 @@
 		{
 			"role": "Tech Lead",
 			"company": "Deloitte",
-			"logos": [
-				"deloitte"
-			],
+			"logos": ["deloitte"],
 			"period": "Feb 2022 – Dec 2022",
 			"location": "Lisbon, Portugal",
 			"highlights": [
@@ -86,10 +80,7 @@
 		{
 			"role": "Earlier experience",
 			"company": "Neotalent and Deloitte",
-			"logos": [
-				"neotalent",
-				"deloitte"
-			],
+			"logos": ["neotalent", "deloitte"],
 			"period": "2019 – 2022",
 			"location": "Portugal",
 			"highlights": [
