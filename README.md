@@ -40,3 +40,13 @@ make cv-deploy CV=cv.pdf
 ### Preparing media assets
 
 See [docs/03_MANAGING_ASSETS.md](docs/03_MANAGING_ASSETS.md).
+
+## License
+
+The source code (`src/`, `scripts/`, `infra/`, and configuration files) is
+licensed under the [MIT License](LICENSE).
+
+Content in `/content` and `/public` (text, photos, and media) is
+© Miguel Pestana Henriques. All rights reserved.
+
+Third-party logos in `/public/logos` are property of their respective owners.
