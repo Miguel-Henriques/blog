@@ -36,9 +36,7 @@ describe('portfolio', () => {
 			within(screen.getByRole('contentinfo')).getByText(profile.location),
 		).toBeVisible()
 		expect(within(main).queryByText(profile.location)).not.toBeInTheDocument()
-		expect(
-			within(main).getByText('Previous: AWS, Founding Engineer'),
-		).toBeVisible()
+		expect(within(main).getByText('Prev: AWS, Founding Engineer')).toBeVisible()
 		expect(screen.queryByText(profile.summary)).not.toBeInTheDocument()
 		expect(
 			within(main).getByRole('link', { name: 'Working on' }),

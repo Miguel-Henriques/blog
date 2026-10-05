@@ -93,24 +93,30 @@ export function AppCard({ app }: AppCardProps) {
 					name={app.name}
 				/>
 			) : null}
-			<div className="flex flex-1 flex-col p-6">
+			<div className="flex flex-1 flex-col p-4 sm:p-6">
 				<div className="flex items-start justify-between gap-4">
-					<h3 className="font-serif text-2xl">{app.name}</h3>
+					<h3 className="font-serif text-xl sm:text-2xl">{app.name}</h3>
 					<Badge variant="secondary">{statusLabels[app.status]}</Badge>
 				</div>
-				<p className="mt-3 leading-7 text-muted-foreground">
+				<p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7">
 					{app.description}
 				</p>
-				<div className="mt-auto pt-5">
-					<ul className="flex flex-wrap gap-2" aria-label="Labels">
+				<div className="mt-auto flex items-center justify-between gap-2 pt-5 sm:block">
+					<ul
+						className="flex min-w-0 flex-wrap gap-1 sm:gap-2"
+						aria-label="Labels"
+					>
 						{labels.map((label) => (
-							<li className="rounded-md border px-3 py-1 text-xs" key={label}>
+							<li
+								className="rounded-md border px-2 py-1 text-xs whitespace-nowrap sm:px-3"
+								key={label}
+							>
 								{label}
 							</li>
 						))}
 					</ul>
 					{app.liveUrl || app.githubUrl ? (
-						<div className="mt-6 flex flex-wrap items-start justify-start gap-2">
+						<div className="flex shrink-0 flex-wrap items-center justify-end gap-2 sm:mt-6 sm:justify-start">
 							{app.liveUrl ? (
 								<Button
 									asChild

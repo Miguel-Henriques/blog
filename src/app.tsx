@@ -16,13 +16,15 @@ export function App() {
 			<main className="flex flex-1 flex-col" id="main-content">
 				<HomePage />
 			</main>
-			<footer className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-5 py-8 text-xs text-muted-foreground sm:px-8">
-				<span>
+			<footer className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-5 py-8 text-xs text-muted-foreground sm:flex-wrap sm:gap-x-6 sm:px-8">
+				<span className="whitespace-nowrap sm:hidden">© Miguel Pestana</span>
+				<span className="hidden sm:inline">
 					© {new Date().getFullYear()} {profile.name}
 				</span>
-				<span className="ml-auto inline-flex items-center gap-2">
+				<span className="ml-auto inline-flex shrink-0 items-center gap-2 whitespace-nowrap">
 					<MapPin aria-hidden="true" className="size-3.5" />
-					{profile.location}
+					<span className="sm:hidden">Lisbon, PT</span>
+					<span className="hidden sm:inline">{profile.location}</span>
 				</span>
 			</footer>
 		</div>

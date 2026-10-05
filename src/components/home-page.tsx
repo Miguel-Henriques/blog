@@ -21,13 +21,13 @@ export function HomePage() {
 	return (
 		<>
 			<section
-				className="relative mx-auto flex min-h-[calc(100svh-4rem)] w-full max-w-6xl flex-col justify-center px-5 py-20 sm:px-8 sm:py-28"
+				className="relative mx-auto flex min-h-[calc(100svh-4rem)] w-full max-w-6xl flex-col items-center justify-center px-5 py-20 text-center sm:items-start sm:px-8 sm:py-28 sm:text-left"
 				id="top"
 			>
 				<h1 className="font-serif text-5xl tracking-tight sm:text-6xl">
 					{profile.name}
 				</h1>
-				<p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-lg text-muted-foreground sm:text-xl">
+				<p className="mt-3 flex flex-col flex-wrap items-center justify-center gap-x-3 gap-y-2 text-lg text-muted-foreground sm:flex-row sm:justify-start sm:text-xl">
 					<span className="inline-flex items-center gap-2.5 text-foreground">
 						<span className="sr-only">Looking for my next role</span>
 						<LoaderCircle
@@ -44,7 +44,10 @@ export function HomePage() {
 					/>
 					<span>Prev: AWS, Founding Engineer</span>
 				</p>
-				<div className="mt-8 flex flex-wrap items-center gap-3" id="contact">
+				<div
+					className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:justify-start"
+					id="contact"
+				>
 					<Button asChild size="icon-lg" variant="outline">
 						<a aria-label="Email me" href={`mailto:${profile.email}`}>
 							<Mail aria-hidden="true" className="size-5" />
@@ -80,7 +83,7 @@ export function HomePage() {
 					</Button>
 				</div>
 				<a
-					className="group absolute bottom-6 left-5 inline-flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground sm:bottom-8 sm:left-8"
+					className="group absolute bottom-6 left-1/2 inline-flex -translate-x-1/2 items-center gap-3 whitespace-nowrap text-sm text-muted-foreground transition-colors hover:text-foreground sm:bottom-8 sm:left-8 sm:translate-x-0"
 					href="#apps"
 				>
 					<span className="inline-flex size-9 items-center justify-center rounded-full border transition-colors group-hover:border-foreground">
@@ -98,7 +101,7 @@ export function HomePage() {
 				id="apps"
 			>
 				<h2
-					className="font-serif text-3xl tracking-tight sm:text-4xl"
+					className="text-center font-serif text-3xl tracking-tight sm:text-left sm:text-4xl"
 					id="working-on-heading"
 				>
 					Working on
