@@ -1,11 +1,13 @@
 import { cleanup, render, screen, within } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { App } from '@/app'
+import { ExperienceSection } from '@/components/experience-section'
 import { profile } from '@/content/profile'
 import { getCvHref } from '@/lib/cv'
 
 afterEach(() => {
 	cleanup()
+	window.history.replaceState({}, '', '/')
 	vi.useRealTimers()
 	vi.restoreAllMocks()
 	vi.unstubAllGlobals()
@@ -20,69 +22,67 @@ function getExperienceEntry(index = 0) {
 	return entry
 }
 
-describe('digital CV', () => {
-	it('places apps before experience and condenses contact into the introduction', () => {
+describe('portfolio', () => {
+	it('keeps the introduction focused and shows projects below it', () => {
 		const { container } = render(<App />)
+		const main = screen.getByRole('main')
 
+		expect(within(main).getByRole('heading', { level: 1 })).toHaveTextContent(
+			profile.name,
+		)
+		expect(screen.getByText('Looking for my next role')).toBeInTheDocument()
+		expect(screen.getByText('Loading next')).toBeVisible()
 		expect(
-			screen.getByRole('heading', { name: 'Miguel Pestana Henriques' }),
+			within(screen.getByRole('contentinfo')).getByText(profile.location),
 		).toBeVisible()
-		expect(screen.getByText('Senior Software Engineer')).toBeVisible()
+		expect(within(main).queryByText(profile.location)).not.toBeInTheDocument()
+		expect(
+			within(main).getByText('Previous: AWS, Founding Engineer'),
+		).toBeVisible()
+		expect(screen.queryByText(profile.summary)).not.toBeInTheDocument()
+		expect(
+			within(main).getByRole('link', { name: 'Working on' }),
+		).toHaveAttribute('href', '#apps')
+		expect(
+			within(screen.getByRole('banner')).queryByRole('link', { name: 'Apps' }),
+		).not.toBeInTheDocument()
 		expect(screen.getByRole('heading', { name: 'Working on' })).toBeVisible()
 		expect(screen.getByRole('heading', { name: 'ReckonX' })).toBeVisible()
-		expect(
-			within(
-				screen
-					.getByRole('heading', { name: 'ReckonX' })
-					.closest('article') as HTMLElement,
-			).getByRole('link', { name: 'Open' }),
-		).toHaveAttribute('href', 'https://reckonx.apps.mipestana.com/')
-		expect(screen.getByRole('link', { name: 'Email me' })).toHaveAttribute(
-			'data-variant',
-			'outline',
-		)
+		expect(container.querySelector('#top article')).not.toBeInTheDocument()
+		expect(container.querySelector('#experience')).not.toBeInTheDocument()
 		expect(
 			Array.from(container.querySelectorAll('main > section')).map(
 				(section) => section.id,
 			),
-		).toEqual(['top', 'apps', 'experience'])
+		).toEqual(['top', 'apps'])
 		expect(screen.getByRole('link', { name: 'Email me' })).toHaveAttribute(
 			'href',
-			'mailto:miguel.p.henriques.96@gmail.com',
+			`mailto:${profile.email}`,
 		)
 		expect(screen.getByRole('link', { name: 'LinkedIn' })).toHaveAttribute(
 			'href',
 			profile.linkedin,
 		)
-		expect(container.querySelector('#top #contact')).toContainElement(
-			screen.getByRole('link', { name: 'Email me' }),
-		)
+		expect(
+			within(main).getByRole('link', { name: 'View GitHub profile' }),
+		).toHaveAttribute('href', profile.github)
+		expect(
+			within(screen.getByRole('banner')).queryByRole('link', {
+				name: 'View GitHub profile',
+			}),
+		).not.toBeInTheDocument()
 		expect(screen.getByRole('link', { name: 'Resume' })).toHaveAttribute(
 			'href',
 			getCvHref(),
 		)
-		expect(container.querySelector('#top a[download]')).not.toBeInTheDocument()
-		expect(
-			screen.queryByRole('link', { name: 'Contact' }),
-		).not.toBeInTheDocument()
-		expect(screen.queryByText('What I’m working on')).not.toBeInTheDocument()
-		for (const heading of [
-			'Sharing what I learn.',
-			'Certifications',
-			'Education',
-			'Languages',
-		]) {
-			expect(
-				screen.queryByRole('heading', { name: heading }),
-			).not.toBeInTheDocument()
-		}
-		expect(
-			screen.queryByRole('link', { name: 'Speaking' }),
-		).not.toBeInTheDocument()
+		expect(screen.getByRole('link', { name: 'Home' })).toHaveAttribute(
+			'href',
+			'/',
+		)
 	})
 
-	it('shows every experience entry and its details immediately', () => {
-		render(<App />)
+	it('preserves the experience component and its details for future use', () => {
+		render(<ExperienceSection />)
 
 		for (const [index, position] of profile.experience.entries()) {
 			const entry = getExperienceEntry(index)

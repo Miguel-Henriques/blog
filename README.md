@@ -4,6 +4,11 @@ A personal website that serves as blog, a digital portfolio and a digital CV.
 
 The website content is centrallised in two folders: `/content` for all text-related content and `/public` for assets such as media.
 
+The home page shows a spacious introduction and contact links, followed by
+“Working on.” A downward arrow at the bottom of the introduction links
+to the projects section on the same page. The experience components and
+profile summary are retained in the source for future use but are not displayed.
+
 ## Deployment
 
 Deployment is handled through a Makefile. Run `make` to list all targets.
