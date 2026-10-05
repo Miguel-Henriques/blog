@@ -1,17 +1,17 @@
 {
 	"name": "Miguel Pestana Henriques",
-	"role": "Senior Software Engineer",
+	"role": "Software Engineer",
 	"location": "Lisbon, Portugal",
 	"email": "miguel.p.henriques.96@gmail.com",
 	"github": "https://github.com/Miguel-Henriques",
 	"linkedin": "https://www.linkedin.com/in/miguelhenriques96",
-	"summary": "7 years of experience designing and building full-stack applications on the cloud. Founding engineer experience shipping agentic workflows end-to-end, 5+ years of consulting experience.",
+	"summary": "6 years of experience designing and building full-stack applications on the cloud. Founding engineer experience shipping agentic workflows end-to-end, 5+ years of consulting experience.",
 	"experience": [
 		{
 			"role": "Founding Engineer",
 			"company": "Contextual",
-			"logos": ["stealth"],
-			"period": "Jan 2026 – Jun 2026",
+			"logos": ["contextual"],
+			"startDate": "Jan 2026",
 			"location": "Remote",
 			"highlights": [
 				"One of three founding team members building an AI-native design experience that enables non-technical users to iterate directly on live web applications.",
@@ -22,7 +22,7 @@
 			"role": "Cloud Application Architect",
 			"company": "Amazon Web Services · Professional Services",
 			"logos": ["aws"],
-			"period": "Jan 2023 – Jan 2026",
+			"startDate": "Jan 2023",
 			"location": "Munich, Germany",
 			"projects": [
 				{
@@ -70,7 +70,7 @@
 			"role": "Tech Lead",
 			"company": "Deloitte",
 			"logos": ["deloitte"],
-			"period": "Feb 2022 – Dec 2022",
+			"startDate": "Feb 2022",
 			"location": "Lisbon, Portugal",
 			"highlights": [
 				"Led six engineers building a cross-platform BMW Group analytics application that turns vehicle sales data into purpose-built views for C-level executives.",
@@ -81,7 +81,7 @@
 			"role": "Earlier experience",
 			"company": "Neotalent and Deloitte",
 			"logos": ["neotalent", "deloitte"],
-			"period": "2019 – 2022",
+			"startDate": "2019",
 			"location": "Portugal",
 			"highlights": [
 				"Built and maintained infrastructure for Deltatre-hosted OTT applications as a DevOps Engineer at Neotalent.",

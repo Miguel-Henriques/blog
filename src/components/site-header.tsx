@@ -21,10 +21,8 @@ function GitHubIcon() {
 }
 
 const navigation = [
-	{ href: '#experience', label: 'Experience' },
 	{ href: '#apps', label: 'Apps' },
-	{ href: '#speaking', label: 'Speaking' },
-	{ href: '#contact', label: 'Contact' },
+	{ href: '#experience', label: 'Experience' },
 ] as const
 
 const getInitialTheme = () => {

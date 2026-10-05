@@ -27,7 +27,7 @@ export interface ExperienceEntry {
 	role: string
 	company: string
 	logos: readonly string[]
-	period: string
+	startDate: string
 	location: string
 	highlights?: readonly string[]
 	projects?: readonly ExperienceProject[]

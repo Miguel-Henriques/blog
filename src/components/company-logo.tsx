@@ -24,9 +24,9 @@ type CompanyLogoDefinition =
 const logoImageClassName = 'max-h-10 max-w-12 object-contain'
 
 const companyLogoById = {
-	stealth: {
-		alt: 'Stealth company',
-		src: '/logos/stealth.png',
+	contextual: {
+		alt: 'Contextual',
+		src: '/logos/contextual.png',
 		fallback: <Building2 aria-hidden="true" className="size-6" />,
 		fallbackClassName:
 			'flex size-14 items-center justify-center text-muted-foreground',
@@ -100,13 +100,13 @@ export function CompanyLogo({ logo }: CompanyLogoProps) {
 			>
 				<img
 					alt=""
-					className={`${logoImageClassName} dark:hidden`}
+					className={`${logoImageClassName} ${logo === 'aws' ? 'company-logo-aws' : ''} dark:hidden`}
 					loading="lazy"
 					src={definition.srcLight}
 				/>
 				<img
 					alt=""
-					className={`${logoImageClassName} hidden dark:block`}
+					className={`${logoImageClassName} ${logo === 'aws' ? 'company-logo-aws' : ''} hidden dark:block`}
 					loading="lazy"
 					src={definition.srcDark}
 				/>

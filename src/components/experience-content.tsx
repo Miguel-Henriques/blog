@@ -85,7 +85,7 @@ function ProjectResources({ links, media }: ProjectResourcesProps) {
 export function ExperienceMeta({ className, position }: ExperienceMetaProps) {
 	return (
 		<div className={cn('text-sm', className)}>
-			<p className="font-semibold">{position.period}</p>
+			<p className="font-semibold whitespace-nowrap">{position.startDate}</p>
 			<p className="mt-1 text-muted-foreground">{position.location}</p>
 		</div>
 	)
@@ -94,7 +94,7 @@ export function ExperienceMeta({ className, position }: ExperienceMetaProps) {
 export function ExperienceIdentity({ position }: ExperienceIdentityProps) {
 	return (
 		<div className="flex items-start gap-4">
-			<div className="flex shrink-0 gap-2">
+			<div className="company-logo-group flex shrink-0">
 				{position.logos.map((logo) => (
 					<CompanyLogo key={logo} logo={logo} />
 				))}

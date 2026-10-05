@@ -1,1 +1,22 @@
-[]
+[
+	{
+		"name": "ReckonX",
+		"description": "IFR flight planning. \n Route planning, navigation logs, fuel calculations, and mass and balance into one workspace.",
+		"status": "in-development",
+		"liveUrl": "https://reckonx.apps.mipestana.com/",
+		"labels": [
+			"SaaS",
+			"Web"
+		]
+	},
+	{
+		"name": "Commands",
+		"description": "Run catalogued commands from your terminal",
+		"status": "in-development",
+		"githubUrl": "https://github.com/Miguel-Henriques/commands",
+		"labels": [
+			"Open Source",
+			"CLI"
+		]
+	}
+]

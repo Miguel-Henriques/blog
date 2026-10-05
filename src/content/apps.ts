@@ -15,14 +15,20 @@ export interface AppMedia {
 	width: number
 }
 
-export interface AppEntry {
+interface AppDetails {
 	description: string
 	liveUrl?: string
 	media?: AppMedia
 	name: string
-	sourceUrl?: string
-	status: 'active' | 'archived' | 'in-progress'
-	technologies: readonly string[]
+	previewUrl?: string
+	status: 'in-development' | 'generally-available'
+	labels: readonly string[]
 }
 
-export const apps = appsData as readonly AppEntry[]
+export type AppEntry = AppDetails &
+	(
+		| { openSource: true; githubUrl: string }
+		| { openSource?: false; githubUrl?: string }
+	)
+
+export const apps: readonly AppEntry[] = appsData as readonly AppEntry[]

@@ -162,6 +162,13 @@ public/media/apps/my-app/
 └── poster.avif
 ```
 
+Use `status: "in-development"` for apps still being developed and
+`status: "generally-available"` for apps ready for general use. A live app can
+still be in development. `labels` can describe categories or technologies.
+Set `openSource: true` and provide `githubUrl` for open source projects; the
+card automatically includes an “Open source” label. `liveUrl` is optional,
+including for CLI tools, libraries, and desktop apps.
+
 Then add the app to `content/apps.json`. See `content/apps.example.json` for
 image and video shapes:
 
@@ -169,8 +176,8 @@ image and video shapes:
 {
 	"name": "My app",
 	"description": "A concise explanation of the problem and outcome.",
-	"status": "active",
-	"technologies": ["React", "TypeScript"],
+	"status": "in-development",
+	"labels": ["React", "TypeScript"],
 	"liveUrl": "https://app.example",
 	"media": {
 		"type": "video",
@@ -210,3 +217,26 @@ Treat these as ceilings rather than targets:
 
 If a file exceeds its ceiling, shorten the recording, reduce dimensions or
 frame rate, remove audio, and then adjust codec quality.
+
+## Use a target site's preview image
+
+App cards can use a remotely hosted Open Graph image without storing media in
+this repository. Run `pnpm apps:refresh` to read each app's `liveUrl` and record
+its `og:image` URL as `previewUrl` in `content/apps.json`. Existing descriptions
+and manually configured media are preserved. Review the catalog changes before
+committing them. The normal build does not make metadata requests.
+
+The target needs an HTTPS `og:image` tag in its server-delivered HTML. Relative
+image URLs are resolved against the fetched page URL. The command stores the URL,
+not the image file. Images load lazily from the target host, and a failed image
+falls back to a text card. Missing metadata does not invent a screenshot.
+
+For example, ReckonX can publish:
+
+```html
+<meta property="og:image" content="https://reckonx.apps.mipestana.com/preview.png" />
+```
+
+The image must exist at that URL. A title or favicon alone cannot provide an app
+screenshot. Keep local `media` for demos or screenshots that need guaranteed
+availability and optimized formats.

@@ -2,10 +2,8 @@
 	{
 		"name": "Example App",
 		"description": "One or two sentences on the problem solved and the outcome.",
-		"status": "active",
-		"technologies": ["React", "TypeScript", "Node.js"],
+		"status": "generally-available",
 		"liveUrl": "https://app.example.com",
-		"sourceUrl": "https://github.com/alex-example/example-app",
 		"media": {
 			"type": "image",
 			"alt": "Creating a project and viewing its generated report",
@@ -14,13 +12,15 @@
 			"imageSources": {
 				"avif": "/media/apps/example-app/screenshot.avif"
 			}
-		}
+		},
+		"labels": ["React", "TypeScript", "Node.js"],
+		"githubUrl": "https://github.com/alex-example/example-app",
+		"openSource": true
 	},
 	{
 		"name": "Demo Workflow App",
 		"description": "Use video media for short screen recordings of a single workflow.",
-		"status": "active",
-		"technologies": ["Next.js", "AWS"],
+		"status": "generally-available",
 		"liveUrl": "https://demo.example.com",
 		"media": {
 			"type": "video",
@@ -32,19 +32,21 @@
 				"mp4": "/media/apps/demo-workflow/demo.mp4",
 				"webm": "/media/apps/demo-workflow/demo.webm"
 			}
-		}
+		},
+		"labels": ["Next.js", "AWS"]
 	},
 	{
 		"name": "Work in Progress",
 		"description": "Apps without media render as text-only cards.",
-		"status": "in-progress",
-		"technologies": ["Python", "FastAPI"]
+		"status": "in-development",
+		"labels": ["Python", "FastAPI"]
 	},
 	{
-		"name": "Archived Side Project",
-		"description": "Archived apps can omit liveUrl and keep sourceUrl only.",
-		"status": "archived",
-		"technologies": ["Vue", "Firebase"],
-		"sourceUrl": "https://github.com/alex-example/archived-app"
+		"name": "Open Source CLI",
+		"description": "Open source tools can link to their repository without a live URL.",
+		"status": "generally-available",
+		"labels": ["Vue", "Firebase"],
+		"githubUrl": "https://github.com/alex-example/archived-app",
+		"openSource": true
 	}
 ]

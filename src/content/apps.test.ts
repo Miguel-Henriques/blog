@@ -8,14 +8,17 @@ describe('apps catalog', () => {
 		expect(new Set(names).size).toBe(names.length)
 
 		for (const app of apps) {
-			const { liveUrl, sourceUrl } = app
+			const { liveUrl, githubUrl } = app
+			expect(['in-development', 'generally-available']).toContain(app.status)
+			expect(Array.isArray(app.labels)).toBe(true)
+			if (app.openSource) expect(githubUrl).toBeTruthy()
 
 			if (liveUrl) {
 				expect(() => new URL(liveUrl)).not.toThrow()
 			}
 
-			if (sourceUrl) {
-				expect(() => new URL(sourceUrl)).not.toThrow()
+			if (githubUrl) {
+				expect(() => new URL(githubUrl)).not.toThrow()
 			}
 		}
 	})
