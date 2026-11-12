@@ -9,6 +9,7 @@ import {
 	useState,
 } from 'react'
 import { FileIcon } from '@/components/code-line'
+import { LogoCube } from '@/components/root-logo'
 import { Button } from '@/components/ui/button'
 import { Kbd } from '@/components/ui/kbd'
 import { profile } from '@/content/profile'
@@ -89,15 +90,8 @@ function PreviewView({ file }: { file: MarkdownFile }) {
 	}, [cursor.line, cursor.reveal])
 
 	return (
-		<div
-			className="mx-auto w-full max-w-6xl px-5 pt-12 pb-24 sm:px-8"
-			data-editor="preview"
-			ref={ref}
-		>
-			{/* Indented to where the editor's text starts, past the gutter. */}
-			<div className="sm:pl-16">
-				<Preview />
-			</div>
+		<div className="content-column pt-12 pb-24" data-editor="preview" ref={ref}>
+			<Preview />
 		</div>
 	)
 }
@@ -236,9 +230,9 @@ function TextView({ file, layout }: { file: TextFile; layout: Layout }) {
 	return (
 		<div
 			className={cn(
-				'relative mx-auto w-full max-w-6xl cursor-text px-5 pt-12 font-mono sm:px-8',
-				// Room for widgets that open under the last lines.
-				layout.widgets.size > 0 ? 'pb-96' : 'pb-24',
+				'content-column relative cursor-text pt-12 font-mono',
+				// Room under the last lines only while a widget is open there.
+				widget ? 'pb-96' : 'pb-24',
 			)}
 			data-editor="source"
 			ref={ref}
@@ -314,10 +308,7 @@ function TextView({ file, layout }: { file: TextFile; layout: Layout }) {
 
 function BinaryView({ file }: { file: BinaryFile }) {
 	return (
-		<div
-			className="mx-auto w-full max-w-6xl px-5 pt-16 pb-24 sm:px-8"
-			data-editor="binary"
-		>
+		<div className="content-column pt-16 pb-24" data-editor="binary">
 			<h1 className="sr-only">{file.path}</h1>
 			<div className="max-w-lg space-y-5 font-ui text-sm text-muted-foreground">
 				<p>
@@ -364,15 +355,10 @@ function EmptyWorkspace() {
 
 	return (
 		<div
-			className="mx-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center gap-8 px-5 py-12 font-ui sm:px-8"
+			className="content-column flex flex-1 flex-col items-center justify-center gap-8 py-12 font-ui"
 			data-editor="empty"
 		>
-			<span
-				aria-hidden="true"
-				className="font-serif text-[6rem] leading-none font-bold tracking-tighter text-foreground/[0.06] select-none sm:text-[8rem]"
-			>
-				MH
-			</span>
+			<LogoCube className="-mb-2" />
 			<div className="text-center">
 				<h1 className="text-lg text-foreground">No file is open</h1>
 				<p className="mt-2 text-sm text-muted-foreground">

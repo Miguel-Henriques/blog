@@ -118,9 +118,11 @@ const clamp = (value: number, min: number, max: number) =>
 	Math.min(Math.max(value, min), max)
 
 export function WorkspaceProvider({ children }: { children: ReactNode }) {
-	const [path, setPath] = useState<string | null>(
-		() => parseHash(window.location.hash) ?? DEFAULT_PATH,
-	)
+	// `#/` (no file open) is null; only a non-route hash falls back to home.
+	const [path, setPath] = useState<string | null>(() => {
+		const initial = parseHash(window.location.hash)
+		return initial === undefined ? DEFAULT_PATH : initial
+	})
 	const [view, setViewState] = useState<EditorView>(readStoredView)
 	const [cursor, setCursor] = useState<Cursor>({
 		col: 1,

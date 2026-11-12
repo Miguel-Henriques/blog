@@ -13,7 +13,7 @@ export function StatusBar() {
 
 	return (
 		<footer className="z-40 border-t bg-card font-ui text-xs whitespace-nowrap text-muted-foreground sm:sticky sm:bottom-0">
-			<div className="mx-auto flex h-7 max-w-6xl items-stretch px-2 sm:px-5">
+			<div className="page-column flex h-7 items-stretch">
 				{problems.length > 0 ? (
 					<button
 						aria-label={`${problems.length} ${problems.length === 1 ? 'problem' : 'problems'}, go to the first`}

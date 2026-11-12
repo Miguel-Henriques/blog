@@ -41,7 +41,7 @@ export function EditorTip() {
 
 	return (
 		<div className="pointer-events-none fixed inset-x-0 bottom-4 z-40 sm:bottom-10">
-			<div className="mx-auto flex max-w-6xl justify-end px-4 sm:px-6.5">
+			<div className="page-column flex justify-end">
 				<aside
 					aria-label="Tip"
 					className="pointer-events-auto w-full rounded-md border bg-card p-3.5 font-ui text-[13px] leading-relaxed text-card-foreground shadow-xl sm:w-[23rem]"

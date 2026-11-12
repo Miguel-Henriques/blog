@@ -80,7 +80,7 @@
 	--color-syntax-variable: var(--syntax-variable);
 	--color-success: var(--success);
 	--color-warning: var(--warning);
-	--font-display: "Instrument Serif", Georgia, serif;
+	--font-logo: "Chakra Petch", "Arial Narrow", sans-serif;
 	--font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 	--font-sans: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 	--font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
@@ -190,6 +190,33 @@
 	margin-left: -1rem;
 }
 
+/*
+ * The page column: the width cap and side padding the window chrome shares
+ * (header, status bar, tip), so their edges line up.
+ */
+@utility page-column {
+	width: 100%;
+	max-width: var(--container-6xl);
+	margin-inline: auto;
+	padding-inline: 1.25rem;
+
+	@media (min-width: 640px) {
+		padding-inline: 2rem;
+	}
+}
+
+/* The narrower column the pages themselves sit in, inside the page column. */
+@utility content-column {
+	width: 100%;
+	max-width: var(--container-5xl);
+	margin-inline: auto;
+	padding-inline: 1.25rem;
+
+	@media (min-width: 640px) {
+		padding-inline: 2rem;
+	}
+}
+
 @keyframes cursor-blink {
 	0%,
 	100% {
@@ -256,32 +283,190 @@
 	}
 }
 
-/* Root breadcrumb logo: "MH" unfolds to "Miguel Henriques" on hover/focus. */
-.root-logo {
-	display: inline-flex;
-	align-items: baseline;
-	font-family: var(--font-display);
-	font-size: 1.375rem;
-	font-style: italic;
+/*
+ * The logo: a machined plate with chamfered corners and the letters cut out
+ * of it. In the breadcrumbs it decodes into the full name on hover (see
+ * RootLogo), lit in the accent colour while decoding.
+ */
+.logo-plate {
+	--chamfer: 0.45em;
+	display: inline-block;
+	padding: 0.44em 0.66em 0.38em;
+	background: var(--foreground);
+	color: var(--background);
+	clip-path: polygon(
+		var(--chamfer) 0,
+		100% 0,
+		100% calc(100% - var(--chamfer)),
+		calc(100% - var(--chamfer)) 100%,
+		0 100%,
+		0 var(--chamfer)
+	);
+	font-family: var(--font-logo);
+	font-size: 0.8125rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
 	line-height: 1;
-	letter-spacing: -0.01em;
+	text-transform: uppercase;
 	white-space: pre;
 }
 
-.root-logo-fold {
-	display: inline-block;
-	max-width: 0;
-	overflow: hidden;
-	opacity: 0;
-	vertical-align: baseline;
-	transition:
-		max-width 0.5s cubic-bezier(0.65, 0, 0.35, 1),
-		opacity 0.3s ease;
+.logo-plate[data-decoding] {
+	background: var(--primary);
+	color: var(--primary-foreground);
 }
 
-:is(:hover, :focus-visible) > .root-logo .root-logo-fold {
-	max-width: 4em;
-	opacity: 1;
+/*
+ * The logo cube (see LogoCube): the logo plate extruded. Front and back are
+ * the plate outline with corners cut back by --c; the cut corners run back
+ * through the depth --d as bevels; the other faces are shortened by --c to
+ * meet them. --tilt is the camera, --yaw the turn. LogoCube animates all
+ * four; at rest it is the flat plate facing you.
+ */
+.logo-cube {
+	--w: 64px;
+	--h: 40px;
+	position: relative;
+	display: grid;
+	place-items: center;
+	/* Room for the box mid-spin (about 90 × 55px); kept tight below the
+	   plate so the label sits close. */
+	width: 7rem;
+	height: 3.5rem;
+	color: var(--foreground);
+	opacity: 0.22;
+}
+
+@media (min-width: 640px) {
+	.logo-cube {
+		scale: 1.1;
+	}
+}
+
+.logo-cube-box {
+	width: 0;
+	height: 0;
+	transform: rotateX(var(--tilt)) rotateY(var(--yaw));
+	transform-style: preserve-3d;
+}
+
+.logo-cube-face {
+	position: absolute;
+	overflow: visible;
+}
+
+.logo-cube-face :is(rect, polygon) {
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.25px;
+	vector-effect: non-scaling-stroke;
+}
+
+.logo-cube-front,
+.logo-cube-back {
+	top: calc(var(--h) / -2);
+	left: calc(var(--w) / -2);
+	width: var(--w);
+	height: var(--h);
+}
+
+.logo-cube-right,
+.logo-cube-left {
+	top: calc((var(--h) - var(--c)) / -2);
+	left: calc(var(--d) / -2);
+	width: var(--d);
+	height: calc(var(--h) - var(--c));
+}
+
+.logo-cube-top,
+.logo-cube-bottom {
+	top: calc(var(--d) / -2);
+	left: calc((var(--w) - var(--c)) / -2);
+	width: calc(var(--w) - var(--c));
+	height: var(--d);
+}
+
+.logo-cube-bevel-tl,
+.logo-cube-bevel-br {
+	top: calc(var(--c) * -0.7071);
+	left: calc(var(--d) / -2);
+	width: var(--d);
+	height: calc(var(--c) * 1.4142);
+}
+
+.logo-cube-front {
+	transform: translateZ(calc(var(--d) / 2));
+}
+
+.logo-cube-back {
+	transform: rotateY(180deg) translateZ(calc(var(--d) / 2));
+}
+
+/* The right side runs below the bottom-right bevel's top; the left side
+   starts below the top-left bevel. */
+.logo-cube-right {
+	transform: translateY(calc(var(--c) / -2)) rotateY(90deg)
+		translateZ(calc(var(--w) / 2));
+}
+
+.logo-cube-left {
+	transform: translateY(calc(var(--c) / 2)) rotateY(-90deg)
+		translateZ(calc(var(--w) / 2));
+}
+
+/* The top starts after the top-left bevel; the bottom stops before the
+   bottom-right one. */
+.logo-cube-top {
+	transform: translateX(calc(var(--c) / 2)) rotateX(90deg)
+		translateZ(calc(var(--h) / 2));
+}
+
+.logo-cube-bottom {
+	transform: translateX(calc(var(--c) / -2)) rotateX(-90deg)
+		translateZ(calc(var(--h) / 2));
+}
+
+/* Bevels: strips along the depth, turned to the 45° cut. */
+.logo-cube-bevel-tl {
+	transform: translate3d(
+			calc((var(--c) - var(--w)) / 2),
+			calc((var(--c) - var(--h)) / 2),
+			0
+		)
+		rotateZ(45deg) rotateY(90deg);
+}
+
+.logo-cube-bevel-br {
+	transform: translate3d(
+			calc((var(--w) - var(--c)) / 2),
+			calc((var(--h) - var(--c)) / 2),
+			0
+		)
+		rotateZ(45deg) rotateY(90deg);
+}
+
+/* The letters sit flat in front of the box and never turn. */
+.logo-cube-letters {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: calc(var(--w) * 0.9);
+	overflow: visible;
+	translate: -50% -50%;
+}
+
+.logo-cube-letters text {
+	/* A halo in the page colour cuts the box's edges away behind the
+	   letters, so "MH" stays clear wherever the edges cross it. */
+	paint-order: stroke;
+	stroke: var(--background);
+	stroke-width: 11px;
+	stroke-linejoin: round;
+	fill: currentColor;
+	font-family: var(--font-logo);
+	font-size: 30px;
+	font-weight: 700;
+	letter-spacing: 2.4px;
 }
 
 /* Inline code in the markdown source: a squared tag, backticks kept at zero width. */
@@ -366,9 +551,5 @@
 @media (prefers-reduced-motion: reduce) {
 	.editor-caret {
 		animation: none;
-	}
-
-	.root-logo-fold {
-		transition: none;
 	}
 }

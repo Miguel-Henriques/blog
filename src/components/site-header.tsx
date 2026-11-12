@@ -46,7 +46,7 @@ export function SiteHeader() {
 
 	return (
 		<header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur-md">
-			<div className="mx-auto flex h-14 max-w-6xl items-center gap-3 px-3.5 sm:px-6.5">
+			<div className="page-column flex h-14 items-center gap-3">
 				<Breadcrumbs />
 				<div className="ml-auto flex shrink-0 items-center gap-1.5">
 					<button

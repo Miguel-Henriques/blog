@@ -15,7 +15,7 @@ import { useWorkspace } from '@/workspace/workspace'
 
 export function DocumentShell({ children }: { children: ReactNode }) {
 	return (
-		<article className="max-w-3xl font-ui text-[15px] leading-7 text-foreground">
+		<article className="w-full font-ui text-[15px] leading-7 text-foreground">
 			{children}
 		</article>
 	)
@@ -184,7 +184,8 @@ export function TalkPreview({
 				<div
 					className={cn(
 						'mt-8 grid gap-3',
-						photos.length > 1 && 'sm:grid-cols-2',
+						// A single photo takes three quarters of the width, more take halves.
+						photos.length === 1 ? 'sm:w-3/4' : 'sm:grid-cols-2',
 					)}
 				>
 					{photos.map((photo) => (
