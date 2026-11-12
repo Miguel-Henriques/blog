@@ -1,32 +1,28 @@
-import { MapPin } from 'lucide-react'
-import { HomePage } from '@/components/home-page'
+import { CommandPalette } from '@/components/command-palette'
+import { Editor } from '@/components/editor'
+import { EditorTip } from '@/components/editor-tip'
 import { SiteHeader } from '@/components/site-header'
-import { profile } from '@/content/profile'
+import { StatusBar } from '@/components/status-bar'
+import { WorkspaceProvider } from '@/workspace/workspace'
 
 export function App() {
 	return (
-		<div className="flex min-h-svh flex-col">
-			<a
-				className="sr-only z-50 bg-background px-4 py-2 focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
-				href="#main-content"
-			>
-				Skip to content
-			</a>
-			<SiteHeader />
-			<main className="flex flex-1 flex-col" id="main-content">
-				<HomePage />
-			</main>
-			<footer className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-5 py-8 text-xs text-muted-foreground sm:flex-wrap sm:gap-x-6 sm:px-8">
-				<span className="whitespace-nowrap sm:hidden">© Miguel Pestana</span>
-				<span className="hidden sm:inline">
-					© {new Date().getFullYear()} {profile.name}
-				</span>
-				<span className="ml-auto inline-flex shrink-0 items-center gap-2 whitespace-nowrap">
-					<MapPin aria-hidden="true" className="size-3.5" />
-					<span className="sm:hidden">Lisbon, PT</span>
-					<span className="hidden sm:inline">{profile.location}</span>
-				</span>
-			</footer>
-		</div>
+		<WorkspaceProvider>
+			<div className="flex min-h-svh flex-col">
+				<a
+					className="sr-only z-50 bg-background px-4 py-2 focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+					href="#main-content"
+				>
+					Skip to content
+				</a>
+				<SiteHeader />
+				<main className="flex flex-1 flex-col" id="main-content">
+					<Editor />
+				</main>
+				<StatusBar />
+			</div>
+			<EditorTip />
+			<CommandPalette />
+		</WorkspaceProvider>
 	)
 }

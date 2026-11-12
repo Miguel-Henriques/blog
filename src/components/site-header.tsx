@@ -1,57 +1,69 @@
-import { Download, Moon, Sun } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { Code, Download, Eye, Moon, Search, Sun } from 'lucide-react'
+import { Breadcrumbs } from '@/components/breadcrumbs'
 import { Button } from '@/components/ui/button'
+import { Kbd } from '@/components/ui/kbd'
 import { getCvHref } from '@/lib/cv'
+import { formatShortcut } from '@/lib/shortcuts'
+import { cn } from '@/lib/utils'
+import { type EditorView, useWorkspace } from '@/workspace/workspace'
 
-const getInitialTheme = () => {
-	if (typeof window === 'undefined') {
-		return false
-	}
+const viewOptions: { icon: typeof Eye; label: string; value: EditorView }[] = [
+	{ icon: Eye, label: 'Preview', value: 'preview' },
+	{ icon: Code, label: 'Markdown', value: 'source' },
+]
 
-	try {
-		const storedTheme = window.localStorage.getItem('theme')
+function ViewToggle() {
+	const { file, setView, view } = useWorkspace()
 
-		if (storedTheme) {
-			return storedTheme === 'dark'
-		}
-	} catch {
-		return window.matchMedia('(prefers-color-scheme: dark)').matches
-	}
+	if (file?.kind !== 'markdown') return null
 
-	return window.matchMedia('(prefers-color-scheme: dark)').matches
+	return (
+		<fieldset className="hidden h-8 shrink-0 items-center gap-0.5 rounded-md border bg-card p-0.5 sm:inline-flex">
+			<legend className="sr-only">View</legend>
+			{viewOptions.map(({ icon: Icon, label, value }) => (
+				<button
+					aria-pressed={view === value}
+					aria-label={label}
+					className={cn(
+						'inline-flex size-7 items-center justify-center rounded-[5px] text-muted-foreground transition-colors hover:text-foreground',
+						view === value && 'bg-secondary text-foreground',
+					)}
+					key={value}
+					onClick={() => setView(value)}
+					title={`${label} (${formatShortcut('V', { shift: true })})`}
+					type="button"
+				>
+					<Icon aria-hidden="true" className="size-3.5" />
+				</button>
+			))}
+		</fieldset>
+	)
 }
 
 export function SiteHeader() {
-	const [isDark, setIsDark] = useState(getInitialTheme)
-
-	useEffect(() => {
-		document.documentElement.classList.toggle('dark', isDark)
-
-		try {
-			window.localStorage.setItem('theme', isDark ? 'dark' : 'light')
-		} catch {
-			return
-		}
-	}, [isDark])
-
-	const handleThemeToggle = () => {
-		setIsDark((currentTheme) => !currentTheme)
-	}
+	const { isDark, openPalette, toggleTheme } = useWorkspace()
+	const searchShortcut = formatShortcut('K')
 
 	return (
-		<header className="bg-background">
-			<div className="mx-auto flex h-16 max-w-6xl items-center px-5 sm:px-8">
-				<a
-					className="font-serif text-lg font-semibold tracking-tight"
-					aria-label="Home"
-					href="/"
-				>
-					MH
-				</a>
-				<div className="ml-auto flex items-center gap-2">
+		<header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur-md">
+			<div className="mx-auto flex h-14 max-w-6xl items-center gap-3 px-3.5 sm:px-6.5">
+				<Breadcrumbs />
+				<div className="ml-auto flex shrink-0 items-center gap-1.5">
+					<button
+						aria-keyshortcuts="Meta+K Control+K"
+						aria-label="Search files and commands"
+						className="inline-flex h-8 items-center gap-2 rounded-md border bg-card px-2 font-ui text-[13px] text-muted-foreground transition-colors hover:text-foreground sm:px-2.5"
+						onClick={() => openPalette()}
+						type="button"
+					>
+						<Search aria-hidden="true" className="size-3.5" />
+						<span className="hidden lg:inline">Search</span>
+						<Kbd className="hidden sm:inline-flex">{searchShortcut}</Kbd>
+					</button>
+					<ViewToggle />
 					<Button
 						aria-label={`Switch to ${isDark ? 'light' : 'dark'} theme`}
-						onClick={handleThemeToggle}
+						onClick={toggleTheme}
 						size="icon"
 						type="button"
 						variant="ghost"
@@ -61,7 +73,7 @@ export function SiteHeader() {
 					<Button asChild size="sm">
 						<a download href={getCvHref()}>
 							<Download aria-hidden="true" />
-							Resume
+							<span className="max-sm:sr-only">Resume</span>
 						</a>
 					</Button>
 				</div>

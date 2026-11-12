@@ -1,12 +1,16 @@
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, X } from 'lucide-react'
 import { useState } from 'react'
+import { FileIcon } from '@/components/code-line'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import type { AppEntry, AppMedia } from '@/content/apps'
 import { useReducedMotion } from '@/hooks/use-reduced-motion'
+import { cn } from '@/lib/utils'
 
 interface AppCardProps {
 	app: AppEntry
+	/** Inside another surface (the projects panel): no border or file tab. */
+	embedded?: boolean
 }
 
 function Media({ media }: { media: AppMedia }) {
@@ -71,17 +75,45 @@ function RemotePreview({ url, name }: { url: string; name: string }) {
 	)
 }
 
-const statusLabels = {
+export const statusLabels = {
 	'in-development': 'In development',
 	'generally-available': 'Generally available',
 }
 
-export function AppCard({ app }: AppCardProps) {
+const statusStyles = {
+	'in-development': 'border-warning/40 text-warning',
+	'generally-available': 'border-success/40 text-success',
+}
+
+export const toFileName = (name: string) =>
+	`${name
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/^-|-$/g, '')}.md`
+
+export function AppCard({ app, embedded = false }: AppCardProps) {
 	const labels = [
 		...new Set([...app.labels, ...(app.openSource ? ['Open source'] : [])]),
 	]
 	return (
-		<article className="group flex h-full flex-col overflow-hidden rounded-lg border bg-card">
+		<article
+			className={cn(
+				'group flex h-full flex-col overflow-hidden bg-background',
+				!embedded && 'rounded-lg border',
+			)}
+		>
+			{embedded ? null : (
+				<div
+					aria-hidden="true"
+					className="flex h-9 border-b bg-card font-ui text-xs"
+				>
+					<span className="-mb-px flex items-center gap-2 border-t border-r border-t-primary bg-background pr-2 pl-3 text-foreground">
+						<FileIcon />
+						{toFileName(app.name)}
+						<X className="size-3.5 text-muted-foreground" />
+					</span>
+				</div>
+			)}
 			{app.media ? (
 				<div className="overflow-hidden border-b bg-muted">
 					<Media media={app.media} />
@@ -96,7 +128,12 @@ export function AppCard({ app }: AppCardProps) {
 			<div className="flex flex-1 flex-col p-4 sm:p-6">
 				<div className="flex items-start justify-between gap-4">
 					<h3 className="font-serif text-xl sm:text-2xl">{app.name}</h3>
-					<Badge variant="secondary">{statusLabels[app.status]}</Badge>
+					<Badge
+						className={cn('rounded-[4px]', statusStyles[app.status])}
+						variant="outline"
+					>
+						{statusLabels[app.status]}
+					</Badge>
 				</div>
 				<p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7">
 					{app.description}

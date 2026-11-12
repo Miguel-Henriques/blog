@@ -26,3 +26,6 @@ Object.defineProperty(window, 'matchMedia', {
 	}),
 	writable: true,
 })
+
+window.scrollTo = () => undefined
+Element.prototype.scrollIntoView = () => undefined
